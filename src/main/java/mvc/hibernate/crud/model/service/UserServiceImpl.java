@@ -35,13 +35,11 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUserFromTable(id);
     }
 
-    @Transactional
     @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
-    @Transactional
     @Override
     public User findById(Long id) {
         return userDao.findById(id);
