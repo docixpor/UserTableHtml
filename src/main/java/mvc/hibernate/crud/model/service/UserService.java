@@ -1,11 +1,10 @@
 package mvc.hibernate.crud.model.service;
 
 import mvc.hibernate.crud.model.entity.User;
-
 import java.util.List;
 
 public interface UserService {
-//    void saveUsers();
+
     void add(User user);
     User updateUser(User user);
     void deleteUserFromTable(Long id);

@@ -1,4 +1,4 @@
-package mvc.hibernate.crud.model.web.controller;
+package mvc.hibernate.crud.model.controller;
 
 import mvc.hibernate.crud.model.entity.User;
 import mvc.hibernate.crud.model.service.UserService;
@@ -8,9 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -24,15 +21,15 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String printUsers(Model model) {
-		List<User> users = userService.getAllUsers();
-		model.addAttribute("users", users);
+		model.addAttribute("users", userService.getAllUsers());
 		return "user-list";
 	}
 
 	@GetMapping("/user-create")
-	public String createUserForm(User user) {
+	public String createUserForm() {
 		return "user-create";
 	}
+
 	@PostMapping("/user-create")
 	public String addUser(User user) {
 		userService.add(user);
@@ -47,8 +44,7 @@ public class UserController {
 
 	@GetMapping("/user-update/{id}")
 	public String updateUserForm(@PathVariable("id") Long id, Model model) {
-		User user = userService.findById(id);
-		model.addAttribute("user", user);
+		model.addAttribute("user", userService.findById(id));
 		return "user-update";
 	}
 

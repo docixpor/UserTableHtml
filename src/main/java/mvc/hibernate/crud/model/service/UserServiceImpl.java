@@ -4,18 +4,11 @@ import mvc.hibernate.crud.model.dao.UserDao;
 import mvc.hibernate.crud.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-//        users.add(new User("Ivan", "Ivanov", (byte) 12));
-//        users.add(new User("Anton", "Antonov", (byte) 23));
-//        users.add(new User("Maxim", "Maximov", (byte) 42));
-//        users.add(new User("Egor", "Egorov", (byte) 18));
-//        users.add(new User("Karim", "Karimov", (byte) 32));
 
     private UserDao userDao;
 
@@ -24,31 +17,31 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-//    @Override
-//    public void saveUsers() {
-//        userDao.saveUsers();
-//    }
-
+    @Transactional
     @Override
     public void add(User user) {
         userDao.add(user);
     }
 
+    @Transactional
     @Override
     public User updateUser(User user) {
         return userDao.updateUser(user);
     }
 
+    @Transactional
     @Override
     public void deleteUserFromTable(Long id) {
         userDao.deleteUserFromTable(id);
     }
 
+    @Transactional
     @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
+    @Transactional
     @Override
     public User findById(Long id) {
         return userDao.findById(id);
